@@ -7,13 +7,24 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
 
+/**
+ * Initialize Spring Application with Config.ini
+ * - Create Property Source
+ * - Set Spring Properties
+ */
 public class IniConfigApplicationContextInitializer
         implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
+    /**
+     * [Override] Initialization
+     * @param context the application to configure
+     */
     @Override
     public void initialize(ConfigurableApplicationContext context) {
         try {
-            String path = System.getProperty("config.path", "/Users/a1234/git/Project/SpringInitializer/Test/config.ini");
+            // Default Path is Windows C:\\Config\\config.ini
+            // Run Command : $ java -Dconfig.path=<path/to/ini> -jar <ApplicationName>.jar
+            String path = System.getProperty("config.path", "C:/Config/config.ini");
             Resource resource = new FileSystemResource(path);
             if (!resource.exists()) {
                 throw new IllegalArgumentException("Config file not found: " + path);
