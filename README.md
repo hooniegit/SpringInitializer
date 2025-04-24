@@ -1,7 +1,7 @@
 # SpringInitializer
 
 ### How to Use
-1. SpringApplicationSetting
+| SpringApplicationSetting
 ``` java
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -19,8 +19,28 @@ public class <ApplicationName> {
 }
 ```
 
-2. Usage
+| Usage (For POJO Class) - Define Configuration Class
 ``` java
+@ConfigurationProperties(prefix = "datasource.tag")
+@Component
+@Getter @Setter
+public class CustomConfiguration {
+    private String url;
+    private String username;
+    private String password;
+    ...
+}
+```
 
-
+| Usage (For Spring Class)
+``` java
+@Component // or Service or Bean
+public class Sample {
+    @Value("${datasource.tag.url}")
+    private String url;
+    @Value("${datasource.tag.username}")
+    private String username;
+    @Value("${datasource.tag.password}")
+    private String password;
+}
 ```
