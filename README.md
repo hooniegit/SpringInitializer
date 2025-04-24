@@ -44,3 +44,8 @@ public class Sample {
     private String password;
 }
 ```
+
+| Run Command - Add Config.ini Path
+```
+$ java -Dconfig.path=D:/settings/config.ini -jar yourapp.jar
+```
