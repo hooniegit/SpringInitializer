@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * Sample MSSQL Service
+ */
 @Service
 public class TagDataService {
 
@@ -14,6 +17,9 @@ public class TagDataService {
         this.tagJdbcTemplate = tagJdbcTemplate;
     }
 
+    /**
+     * Sample Task :: SELECT Query
+     */
     @PostConstruct
     public void testQuery() {
         Integer tagCount = tagJdbcTemplate.queryForObject("""
@@ -23,5 +29,6 @@ public class TagDataService {
 
         System.out.println("[TagCount] >>>>>>>> " + tagCount);
     }
+
 }
 
